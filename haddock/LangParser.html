@@ -1,0 +1,1784 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>LangParser</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock-util.js" TYPE="text/javascript"
+></SCRIPT
+><SCRIPT TYPE="text/javascript"
+>window.onload = function () {setSynopsis("mini_LangParser.html")};</SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+>ml</TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>LangParser</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Description</TD
+></TR
+><TR
+><TD CLASS="doc"
+>LangParser defines the functions which are used to parse programs in .
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Areduce"
+>reduce</A
+> :: Float -&gt; Float</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Afloat"
+>float</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> Float</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Avar"
+>var</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aval"
+>val</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Avalue"
+>value</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aadd"
+>add</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Asub"
+>sub</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Amul"
+>mul</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseDiv"
+>parseDiv</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aexpr"
+>expr</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseFd"
+>parseFd</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseBk"
+>parseBk</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseRt"
+>parseRt</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseLt"
+>parseLt</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparsePenUp"
+>parsePenUp</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparsePenDown"
+>parsePenDown</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseRGB"
+>parseRGB</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseColor"
+>parseColor</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> Color</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseChgColor"
+>parseChgColor</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseMoveTo"
+>parseMoveTo</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseJumpTo"
+>parseJumpTo</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseTurtleCmd"
+>parseTurtleCmd</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aexprs"
+>exprs</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseT"
+>parseT</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseCall"
+>parseCall</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseRepeat"
+>parseRepeat</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseCondition"
+>parseCondition</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ACondition"
+>Condition</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseIf"
+>parseIf</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparsePrograms"
+>parsePrograms</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [<A HREF="Lang.html#t%3AProgram"
+>Program</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseSeq"
+>parseSeq</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseProgram"
+>parseProgram</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseArgs"
+>parseArgs</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [String]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Afunction"
+>function</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> (String, <A HREF="Lang.html#t%3AFunction"
+>Function</A
+>)</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Ascript"
+>script</A
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseScript"
+>parseScript</A
+> :: String -&gt; Either String <A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Atest"
+>test</A
+> ::  <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> a -&gt; String -&gt; a</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Documentation</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:reduce"
+><A NAME="v%3Areduce"
+></A
+></A
+><B
+>reduce</B
+> :: Float -&gt; Float</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Areduce"
+>reduce</A
+></TT
+> function converts a float, n, to 0.n.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:float"
+><A NAME="v%3Afloat"
+></A
+></A
+><B
+>float</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> Float</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Afloat"
+>float</A
+></TT
+> function attempts to parse a float or integer.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:var"
+><A NAME="v%3Avar"
+></A
+></A
+><B
+>var</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+><TD CLASS="rdoc"
+>Returns an <TT
+><A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TT
+> of the <TT
+><A HREF="Lang.html#v%3AVar"
+>Var</A
+></TT
+> type.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3Avar"
+>var</A
+></TT
+> function attempts to parse a variable identifier.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:val"
+><A NAME="v%3Aval"
+></A
+></A
+><B
+>val</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+><TD CLASS="rdoc"
+>Returns an <TT
+><A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TT
+> of the <TT
+><A HREF="Lang.html#v%3AVar"
+>Var</A
+></TT
+> type.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3Aval"
+>val</A
+></TT
+> function attempt to parse a <TT
+>Float</TT
+>.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:value"
+><A NAME="v%3Avalue"
+></A
+></A
+><B
+>value</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+><TD CLASS="rdoc"
+>Returns an <TT
+><A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TT
+> of the <TT
+><A HREF="Lang.html#v%3AVar"
+>Var</A
+></TT
+> or <TT
+><A HREF="Lang.html#v%3AVal"
+>Val</A
+></TT
+> type.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3Avalue"
+>value</A
+></TT
+> function attempts to parse a variable or value.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:add"
+><A NAME="v%3Aadd"
+></A
+></A
+><B
+>add</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Aadd"
+>add</A
+></TT
+> function attempts to parse a mathematical expression containing the plus operator.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:sub"
+><A NAME="v%3Asub"
+></A
+></A
+><B
+>sub</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Asub"
+>sub</A
+></TT
+> function attempts to parse a mathematical expression containing the minus operator.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:mul"
+><A NAME="v%3Amul"
+></A
+></A
+><B
+>mul</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Amul"
+>mul</A
+></TT
+> function attempts to parse a mathematical expression containing the multiplication operator.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseDiv"
+><A NAME="v%3AparseDiv"
+></A
+></A
+><B
+>parseDiv</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+>div</TT
+> function attempts to parse a mathematical expression containing the division operator.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:expr"
+><A NAME="v%3Aexpr"
+></A
+></A
+><B
+>expr</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Aexpr"
+>expr</A
+></TT
+> function attempts to parse a mathematical expression.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseFd"
+><A NAME="v%3AparseFd"
+></A
+></A
+><B
+>parseFd</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseFd"
+>parseFd</A
+></TT
+> function attempts to parse a <A HREF="Fd.html"
+>Fd</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseBk"
+><A NAME="v%3AparseBk"
+></A
+></A
+><B
+>parseBk</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseBk"
+>parseBk</A
+></TT
+> function attempts to parse a <A HREF="Bk.html"
+>Bk</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseRt"
+><A NAME="v%3AparseRt"
+></A
+></A
+><B
+>parseRt</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseRt"
+>parseRt</A
+></TT
+> function attempts to parse a <A HREF="Rt.html"
+>Rt</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseLt"
+><A NAME="v%3AparseLt"
+></A
+></A
+><B
+>parseLt</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseLt"
+>parseLt</A
+></TT
+> function attempts to parse a <A HREF="Lt.html"
+>Lt</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parsePenUp"
+><A NAME="v%3AparsePenUp"
+></A
+></A
+><B
+>parsePenUp</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparsePenUp"
+>parsePenUp</A
+></TT
+> function attempts to parse a <A HREF="PenUp.html"
+>PenUp</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parsePenDown"
+><A NAME="v%3AparsePenDown"
+></A
+></A
+><B
+>parsePenDown</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparsePenDown"
+>parsePenDown</A
+></TT
+> function attempts to parse a <A HREF="PenDown.html"
+>PenDown</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseRGB"
+><A NAME="v%3AparseRGB"
+></A
+></A
+><B
+>parseRGB</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseRGB"
+>parseRGB</A
+></TT
+> function attempts to parse a color expressed as a RGB triple.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseColor"
+><A NAME="v%3AparseColor"
+></A
+></A
+><B
+>parseColor</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> Color</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseColor"
+>parseColor</A
+></TT
+> function attempts to parse one of the predefined colors.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseChgColor"
+><A NAME="v%3AparseChgColor"
+></A
+></A
+><B
+>parseChgColor</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseChgColor"
+>parseChgColor</A
+></TT
+> function attempts to parse a ChgColor-TurtleCmd, which is <A HREF="Color.html"
+>Color</A
+> followed by a RGB-triple or a predefined color.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseMoveTo"
+><A NAME="v%3AparseMoveTo"
+></A
+></A
+><B
+>parseMoveTo</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseMoveTo"
+>parseMoveTo</A
+></TT
+> function attempts to parse a <A HREF="MoveTo.html"
+>MoveTo</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseJumpTo"
+><A NAME="v%3AparseJumpTo"
+></A
+></A
+><B
+>parseJumpTo</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseJumpTo"
+>parseJumpTo</A
+></TT
+> function attempts to parse a <A HREF="JumpTo.html"
+>JumpTo</A
+>-TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseTurtleCmd"
+><A NAME="v%3AparseTurtleCmd"
+></A
+></A
+><B
+>parseTurtleCmd</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ATurtleCmd"
+>TurtleCmd</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseTurtleCmd"
+>parseTurtleCmd</A
+></TT
+> function attempts to parse a TurtleCmd
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:exprs"
+><A NAME="v%3Aexprs"
+></A
+></A
+><B
+>exprs</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Aexprs"
+>exprs</A
+></TT
+> function attempts to parse a list of expressions, delimited by ','. Example: <A HREF="a, b, 6, 2-5.html"
+>a, b, 6, 2-5</A
+>
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseT"
+><A NAME="v%3AparseT"
+></A
+></A
+><B
+>parseT</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseT"
+>parseT</A
+></TT
+> function attempts to parse a TurtleCmd-program
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseCall"
+><A NAME="v%3AparseCall"
+></A
+></A
+><B
+>parseCall</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseCall"
+>parseCall</A
+></TT
+> function attempts to parse a function call with an identifier and zero or more arguments. Examples: <A HREF="f().html"
+>f()</A
+> or <A HREF="func(a,b-2).html"
+>func(a,b-2)</A
+>
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseRepeat"
+><A NAME="v%3AparseRepeat"
+></A
+></A
+><B
+>parseRepeat</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseRepeat"
+>parseRepeat</A
+></TT
+> function attempts to parse a repeat-statement. Example: <A HREF="repeat 5 { Fd 1 Rt 1}.html"
+>repeat 5 { Fd 1 Rt 1}</A
+>
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseCondition"
+><A NAME="v%3AparseCondition"
+></A
+></A
+><B
+>parseCondition</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ACondition"
+>Condition</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseCondition"
+>parseCondition</A
+></TT
+> function attempts to parse a conditional-statement. Examples include: <A HREF="a < 2.html"
+>a &lt; 2</A
+>, <A HREF="b == x-5.html"
+>b == x-5</A
+>.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseIf"
+><A NAME="v%3AparseIf"
+></A
+></A
+><B
+>parseIf</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseFd"
+>parseFd</A
+></TT
+> function attempts to parse an <TT
+><A HREF="Lang.html#v%3AIf"
+>If</A
+></TT
+>- or <TT
+><A HREF="Lang.html#v%3AIfElse"
+>IfElse</A
+></TT
+>-statement.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parsePrograms"
+><A NAME="v%3AparsePrograms"
+></A
+></A
+><B
+>parsePrograms</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [<A HREF="Lang.html#t%3AProgram"
+>Program</A
+>]</TD
+><TD CLASS="rdoc"
+>A list of programs.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3AparsePrograms"
+>parsePrograms</A
+></TT
+> function attempts to parse a sequence of programs.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseSeq"
+><A NAME="v%3AparseSeq"
+></A
+></A
+><B
+>parseSeq</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+><TD CLASS="rdoc"
+>A <TT
+><A HREF="Lang.html#v%3ASeq"
+>Seq</A
+></TT
+> <TT
+><A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3AparseSeq"
+>parseSeq</A
+></TT
+> function attempts to parse a sequence of programs.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseProgram"
+><A NAME="v%3AparseProgram"
+></A
+></A
+><B
+>parseProgram</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseProgram"
+>parseProgram</A
+></TT
+> function attempts to parse a program.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseArgs"
+><A NAME="v%3AparseArgs"
+></A
+></A
+><B
+>parseArgs</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> [String]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3AparseArgs"
+>parseArgs</A
+></TT
+> function attempts to parse a number of arguments in a <TT
+><A HREF="Lang.html#t%3AFunction"
+>Function</A
+></TT
+> definition.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:function"
+><A NAME="v%3Afunction"
+></A
+></A
+><B
+>function</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> (String, <A HREF="Lang.html#t%3AFunction"
+>Function</A
+>)</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Afunction"
+>function</A
+></TT
+> function attempts to parse a <TT
+><A HREF="Lang.html#v%3AFn"
+>Fn</A
+></TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:script"
+><A NAME="v%3Ascript"
+></A
+></A
+><B
+>script</B
+> :: <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> <A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+>The <TT
+><A HREF="LangParser.html#v%3Ascript"
+>script</A
+></TT
+> function attempts to parse a script, i.e. a sequence of function <TT
+><A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseScript"
+><A NAME="v%3AparseScript"
+></A
+></A
+><B
+>parseScript</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: String</TD
+><TD CLASS="rdoc"
+><TT
+>String</TT
+> to be parsed into function <TT
+><A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+>-&gt; Either String <A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TD
+><TD CLASS="rdoc"
+>Returns <TT
+>Either</TT
+> a <TT
+>String</TT
+> error message or function <TT
+><A HREF="Lang.html#t%3ADefinitions"
+>Definitions</A
+></TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3AparseScript"
+>parseScript</A
+></TT
+> function attempts to parse a complete script.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:test"
+><A NAME="v%3Atest"
+></A
+></A
+><B
+>test</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: </TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+>=&gt; <A HREF="Parsing.html#t%3AParser"
+>Parser</A
+> a</TD
+><TD CLASS="rdoc"
+>The <TT
+>String</TT
+> to be <TT
+><A HREF="Parsing.html#v%3Aparse"
+>parse</A
+></TT
+>d
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+>-&gt; String</TD
+><TD CLASS="rdoc"
+>The result of using the <TT
+><A HREF="Parsing.html#t%3AParser"
+>Parser</A
+></TT
+> to <TT
+><A HREF="Parsing.html#v%3Aparse"
+>parse</A
+></TT
+> the <TT
+>String</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+>-&gt; a</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>The <TT
+><A HREF="LangParser.html#v%3Atest"
+>test</A
+></TT
+> function attempts to use the given parsing function to <TT
+><A HREF="Parsing.html#v%3Aparse"
+>parse</A
+></TT
+> an input <TT
+>String</TT
+>
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 2.6.0</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

@@ -1,0 +1,116 @@
+*LangParser> test float "2.2"
+2.2
+*LangParser> test float "2.0"
+2.0
+*LangParser> test float "-0.2"
+0.2
+*LangParser> test float "-2.2"
+-2.2
+*LangParser> test float "     -2.2    "
+-2.2
+*LangParser> test var " abc    "
+Var "abc"
+*LangParser> test float "3 .3"
+*** Exception: There is more... .3
+*LangParser> test float "3. 3"
+*** Exception: There is more... . 3
+*LangParser> test var "3"
+*** Exception: Error parsing script.
+*LangParser> test val "    -2.2    "
+Val (-2.2)
+*LangParser> test value "  -2.2    "
+Val (-2.2)
+*LangParser> test value "  abc    "
+Var "abc"
+*LangParser> test add  "  abc  - 5    "
+*** Exception: Error parsing script.
+*LangParser> test add  "  abc  + 5    "
+Add (Var "abc") (Val 5.0)
+*LangParser> test sub  "  abc  - 5    "
+Sub (Var "abc") (Val 5.0)
+*LangParser> test expr  "  abc  * 5    "
+Mul (Var "abc") (Val 5.0)
+*LangParser> test expr  "  abc  - 5    "
+Sub (Var "abc") (Val 5.0)
+*LangParser> test expr  "  abc  + 5    "
+Add (Var "abc") (Val 5.0)
+*LangParser> test expr  "  abc  / 5    "
+Div (Var "abc") (Val 5.0)
+*LangParser> test expr  "  abc    "
+Var "abc"
+*LangParser> test expr  "  -5.5    "
+Val (-5.5)
+*LangParser> test parseT "Fd  a - 2.2 "
+T (Fd (Sub (Var "a") (Val 2.2)))
+*LangParser> test parseT "Bk  a + 2.2 "
+T (Bk (Add (Var "a") (Val 2.2)))
+*LangParser> test parseT "Rt  a * 2.2 "
+T (Rt (Mul (Var "a") (Val 2.2)))
+*LangParser> test parseT "Lt  a / 2.2 "
+T (Lt (Div (Var "a") (Val 2.2)))
+*LangParser> test parseT "  PenUp  "
+T PenUp
+*LangParser> test parseT "  PenDown  "
+T PenDown
+*LangParser> test parseT "  MoveTo -3.3 a  "
+T (MoveTo (Val (-3.3)) (Var "a"))
+*LangParser> test parseT "  JumpTo -3.3 a  "
+T (JumpTo (Val (-3.3)) (Var "a"))
+*LangParser> test parseT "  JumpTo -3.3 -a  "
+*** Exception: Error parsing script.
+*LangParser> test parseT "  JumpTo -3.3 -3.3  "
+*** Exception: Error parsing script.
+*LangParser> test parseT "  MoveTo -3.3 -a  "
+*** Exception: Error parsing script.
+*LangParser> test parseT "  Color RED  "
+T (ChgColor (Val 255.0) (Val 0.0) (Val 0.0))
+*LangParser> test parseT "  ColorRED  "
+T (ChgColor (Val 255.0) (Val 0.0) (Val 0.0))
+*LangParser> test parseT "  Color   RED  "
+T (ChgColor (Val 255.0) (Val 0.0) (Val 0.0))
+*LangParser> test parseT "  Color  GREEN  "
+T (ChgColor (Val 0.0) (Val 255.0) (Val 0.0))
+*LangParser> test parseT "  Color  BLUE  "
+T (ChgColor (Val 0.0) (Val 0.0) (Val 255.0))
+*LangParser> test parseT "  Color  YELLOW  "
+T (ChgColor (Val 255.0) (Val 255.0) (Val 0.0))
+*LangParser> test parseT "  Color  CYAN  "
+T (ChgColor (Val 0.0) (Val 255.0) (Val 255.0))
+*LangParser> test parseT "  Color  MAGNETA  "
+T (ChgColor (Val 255.0) (Val 0.0) (Val 255.0))
+*LangParser> test parseT "  Color  ROSE  "
+T (ChgColor (Val 255.0) (Val 0.0) (Val 127.5))
+*LangParser> test parseT "  Color  VIOLET  "
+T (ChgColor (Val 127.5) (Val 0.0) (Val 255.0))
+*LangParser> test parseT "  Color  AZURE  "
+T (ChgColor (Val 0.0) (Val 127.5) (Val 255.0))
+*LangParser> test parseT "  Color  AQUAMARINE  "
+T (ChgColor (Val 0.0) (Val 255.0) (Val 127.5))
+*LangParser> test parseT "  Color  CHARTREUSE  "
+T (ChgColor (Val 127.5) (Val 255.0) (Val 0.0))
+*LangParser> test parseT "  Color  ORANGE  "
+T (ChgColor (Val 255.0) (Val 127.5) (Val 0.0))
+*LangParser> test parseT "  Color  (125.5, 33.33, 56.7  "
+*** Exception: Error parsing script.
+*LangParser> test parseT "  Color  (125.5, 33.33, 56.7)  "
+T (ChgColor (Val 125.5) (Val 33.33) (Val 56.7))
+*LangParser> test exprs ""
+[]
+*LangParser> test exprs " a "
+[Var "a"]
+*LangParser> test exprs "a"
+[Var "a"]
+*LangParser> test exprs "-2.2"
+[Val (-2.2)]
+*LangParser> test exprs "-2.2, a"
+[Val (-2.2),Var "a"]
+*LangParser> test exprs "-2.2, a, "
+[Val (-2.2),Var "a"]
+*LangParser> test exprs "-2.2, a, , "
+*** Exception: There is more... , 
+*LangParser> test exprs "-2.2, a, a"
+[Val (-2.2),Var "a",Var "a"]
+*LangParser> test exprs "-2.2, a, b"
+[Val (-2.2),Var "a",Var "b"]
+*LangParser> 
+

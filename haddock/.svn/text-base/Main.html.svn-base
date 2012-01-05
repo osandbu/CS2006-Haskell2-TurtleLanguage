@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>Main</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock-util.js" TYPE="text/javascript"
+></SCRIPT
+><SCRIPT TYPE="text/javascript"
+>window.onload = function () {setSynopsis("mini_Main.html")};</SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+>ml</TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>Main</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Description</TD
+></TR
+><TR
+><TD CLASS="doc"
+>The Main module contains the main method. Reads arguments from the command line, reads a script from the filename given as the first argument and executes the script with the remaining arguments as parameters passed into the script's main method.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Amain"
+>main</A
+> :: IO ()</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AparseArgs"
+>parseArgs</A
+> :: [String] -&gt; [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3ArunScript"
+>runScript</A
+> :: String -&gt; [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>] -&gt; IO ()</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AreadFile%27"
+>readFile'</A
+> :: String -&gt; IO String</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Documentation</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:main"
+><A NAME="v%3Amain"
+></A
+></A
+><B
+>main</B
+> :: IO ()</TD
+></TR
+><TR
+><TD CLASS="doc"
+><TT
+><A HREF="Main.html#v%3Amain"
+>main</A
+></TT
+> method which reads arguments from the command line, attempts to read and parse the first argument as a filename of a script and passes the remainding arguments as parameters to the script's <TT
+><A HREF="Main.html#v%3Amain"
+>main</A
+></TT
+> method.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:parseArgs"
+><A NAME="v%3AparseArgs"
+></A
+></A
+><B
+>parseArgs</B
+> :: [String] -&gt; [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+><TT
+><A HREF="Main.html#v%3AparseArgs"
+>parseArgs</A
+></TT
+> converts a list of <TT
+>String</TT
+>s to <TT
+><A HREF="Lang.html#t%3AExpr"
+>Expr</A
+></TT
+>s.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:runScript"
+><A NAME="v%3ArunScript"
+></A
+></A
+><B
+>runScript</B
+> :: String -&gt; [<A HREF="Lang.html#t%3AExpr"
+>Expr</A
+>] -&gt; IO ()</TD
+></TR
+><TR
+><TD CLASS="doc"
+><TT
+><A HREF="Main.html#v%3ArunScript"
+>runScript</A
+></TT
+> runs a script with a given filename and using some given expressions as arguments.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v:readFile'"
+><A NAME="v%3AreadFile%27"
+></A
+></A
+><B
+>readFile'</B
+> :: String -&gt; IO String</TD
+></TR
+><TR
+><TD CLASS="doc"
+><TT
+><A HREF="Main.html#v%3AreadFile%27"
+>readFile'</A
+></TT
+> reads a file or reports throws an error if the file does not exist or some other IO error occurs.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 2.6.0</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>
